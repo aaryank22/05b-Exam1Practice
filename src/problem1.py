@@ -3,7 +3,7 @@ PRACTICE Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
+         their colleagues, and Aaryan Khatri.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
@@ -27,7 +27,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 ###############################################################################
 
 import testing_helper
-import time
+import math
 
 
 def main():
@@ -148,9 +148,27 @@ def run_test_problem1a():
     #   print('Test 1 expected:', expected)
     #   print('       actual:  ', actual)
     # -------------------------------------------------------------------------
+    # Test 1:
+    expected = -1.601  # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([2, 7], expected, test_results,
+                                  format_string)
+    actual = problem1a(2, 7)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
 
+    # Test 2:
+    expected = 1.278  # This is APPROXIMATELY the correct answer.
+    print_expected_result_of_test([4, 23], expected, test_results,
+                                  format_string)
+    actual = problem1a(4, 23)
+    print_actual_result_of_test(expected, actual, test_results, precision=3)
 
 def problem1a(m, n):
+    total = 0
+    for k in range(n + 1 - m):
+        total = total + math.sin(k**2)
+
+    return total
+
     """
     What comes in:  Integers m and n with abs(m) <= abs(n).
     What goes out:
