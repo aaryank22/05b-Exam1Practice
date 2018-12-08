@@ -38,7 +38,7 @@ def main():
 
 
 ###############################################################################
-# TODO: 2.  READ the green doc-string for the:
+# DONE: 2.  READ the green doc-string for the:
 #   - is_prime
 #   - sum_of_digits
 # functions defined below.  You do NOT need to understand their
@@ -140,7 +140,7 @@ def run_test_problem1a():
     print_summary_of_test_results(test_results)
 
     # -------------------------------------------------------------------------
-    # TO DO: 2 (continued).
+    # DONE: 2 (continued).
     # Below this comment, add 2 more test cases of your own choosing.
     # You do NOT need to use the above form.  Instead, use the usual:
     #   expected = XXX
@@ -164,8 +164,8 @@ def run_test_problem1a():
 
 def problem1a(m, n):
     total = 0
-    for k in range(n + 1 - m):
-        total = total + math.sin(k**2)
+    for i in range(n*n - m*m +1):
+        total = total + math.sin(i + m*m )
 
     return total
 
@@ -186,7 +186,7 @@ def problem1a(m, n):
       -- If m is 30 and n is 100, the correct answer is about 1.278.
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -199,7 +199,7 @@ def problem1a(m, n):
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement this TEST function.
+    #   DONE: 5. Implement this TEST function.
     #   It TESTS the  problem1b  function defined below.
     #   Include at least **   4   ** tests.  Use the usual form:
     #
@@ -217,8 +217,44 @@ def run_test_problem1b():
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
 
+    format_string = '    problem1b( {}, {} )'
+    test_results = [0, 0]
+
+    expected = 3
+    print_expected_result_of_test([3, 9], expected, test_results, format_string)
+    actual = problem1b(3, 9)
+    print_actual_result_of_test(expected, actual, test_results)
+
+    # Test 2:
+    expected = 6
+    print_expected_result_of_test([4, 11], expected, test_results, format_string)
+    actual = problem1b(4, 11)
+    print_actual_result_of_test(expected, actual, test_results)
+
+    # Test 3:
+    expected = 33
+    print_expected_result_of_test([3, 5], expected, test_results, format_string)
+    actual = problem1b(3, 5)
+    print_actual_result_of_test(expected, actual, test_results)
+
+    # Test 4:
+    expected = 5
+    print_expected_result_of_test([3, 5], expected, test_results, format_string)
+    actual = problem1b(3, 5)
+    print_actual_result_of_test(expected, actual, test_results)
+
 
 def problem1b(m, f):
+    total = 0
+    for k in range(((f * m) + 1) - m):
+        if is_prime(k + m):
+            total = total + 1
+
+    return total
+
+
+
+
     """
     What comes in:  Positive integers m and f such that m >= 2.
     What goes out:
@@ -235,7 +271,7 @@ def problem1b(m, f):
            since there are 44 primes between 5 and 200.
      """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    #   DONE: 6. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     ###########################################################################
@@ -308,6 +344,14 @@ def run_test_problem1c():
 
 
 def problem1c(n):
+    total = 1
+    for k in range(n + 1 - 2):
+        if is_prime(k + 2):
+            total = total*(k + 2)
+    productsum = sum_of_digits(total)
+
+    return productsum
+
     """
     What comes in:  An integer n >= 2.
     What goes out:
