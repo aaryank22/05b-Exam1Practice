@@ -97,6 +97,8 @@ def problem2a(circle, rectangle, window):
            (with no waiting for a click from the user this time).
       Must  ** NOT close **   the window.
 
+
+
     Type hints:
       :type circle:    rg.Circle
       :type rectangle: rg.Rectangle
@@ -112,8 +114,42 @@ def problem2a(circle, rectangle, window):
     #    TIME ESTIMATE:   10 to 15 minutes.
     # -------------------------------------------------------------------------
 
+    # first screen
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    x = rectangle.get_upper_right_corner().x
+    y = rectangle.get_upper_right_corner().y
+    x2 = rectangle.get_lower_left_corner().x
+    y2 = rectangle.get_lower_left_corner().y
+    line = rg.Line(rg.Point(x, y), rg.Point(x2, y2))
+    line.arrow = 'last'
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+
+
+
+
+
+
+
+
+
+
+
+
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
+
     print()
     print('--------------------------------------------------')
     print('Testing the   problem2b   function:')
@@ -172,7 +208,14 @@ def problem2b(rect, n, delta, win):
       :type n:      int
       :type delta:  int
       :type win:    rg.RoseWindow
+
+
     """
+
+
+
+
+
     # -------------------------------------------------------------------------
     # TODO: 3. Implement and test this function.
     #          Tests have been written for you (above).
@@ -182,6 +225,19 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # -------------------------------------------------------------------------
+    rect.attach_to(win)
+    x3 = rect.get_upper_right_corner().x
+    y3 = rect.get_upper_right_corner().y
+    x4 = rect.get_lower_left_corner().x
+    y4 = rect.get_lower_left_corner().y
+    for k in range(n):
+        x3 = x3 + (delta)
+        y3 = y3 - (delta)
+        x4 = x4 - (delta)
+        y4 = y4 + (delta)
+        rectangle1 = rg.Rectangle(rg.Point(x3, y3), rg.Point(x4, y4))
+        rectangle1.attach_to(win)
+    win.render()
 
 
 # -----------------------------------------------------------------------------
