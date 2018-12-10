@@ -138,9 +138,36 @@ def problem3a(window, point, n):
         :type n:      int
     """
     start = point
-    end = point
-    end.y = end. y + 50
+    end = point.clone()
+    end.y = end.y + 50
+    thickness = 1
+    totalthickness = 0
     for k in range(n):
+        line = rg.Line(rg.Point(start.x, start.y), rg.Point(end.x, end.y))
+        line.thickness = thickness
+        line.attach_to(window)
+        start.y = start.y + 10
+        end.y = end.y + 10
+        start.x = start.x + 20
+        end.x = end.x + 20
+        totalthickness = totalthickness + thickness
+        print(totalthickness)
+
+        if thickness + 2 <= 13:
+            thickness = thickness + 2
+
+    window.render()
+    return totalthickness
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -208,6 +235,10 @@ def problem3b(m, point1):
         :type m:      int
         :type point1: rg.Point
     """
+    window = rg.RoseWindow(400, 650)
+    for k in range(m):
+        problem3a()
+
     # -------------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
     #          Tests have been written for you (above).
