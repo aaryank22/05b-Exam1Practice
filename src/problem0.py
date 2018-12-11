@@ -353,14 +353,15 @@ def problem0c(circle, n, window):
     circle.attach_to(window)
     diameter = circle.radius * 2
 
-    x = circle.center.x + diameter
+    x = circle.center.x
     y = circle.center.y
     for k in range(n):
+        x = x + diameter
         c = rg.Circle(rg.Point(x,y), circle.radius)
         c.attach_to(window)
         window.render(0.5)
 
-        x = x + diameter
+
 
 ###############################################################################
 # Our tests use the following to print error messages in red.

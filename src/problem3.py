@@ -137,7 +137,7 @@ def problem3a(window, point, n):
         :type point:  rg.Point
         :type n:      int
     """
-    start = point
+    start = point.clone()
     end = point.clone()
     end.y = end.y + 50
     thickness = 1
@@ -172,7 +172,7 @@ def problem3a(window, point, n):
 
 
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -236,8 +236,15 @@ def problem3b(m, point1):
         :type point1: rg.Point
     """
     window = rg.RoseWindow(400, 650)
+    point = rg.Point(point1.x, point1.y)
+    n = 3
     for k in range(m):
-        problem3a()
+        problem3a(window, point, n)
+        point = rg.Point(point1.x, point1.y + (60 * k))
+        n = n + 2 * k
+
+    window.close_on_mouse_click()
+
 
     # -------------------------------------------------------------------------
     # TODO: 4. Implement and test this function.
