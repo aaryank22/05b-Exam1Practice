@@ -137,19 +137,20 @@ def problem3a(window, point, n):
         :type point:  rg.Point
         :type n:      int
     """
-    start = point.clone()
-    end = point.clone()
-    end.y = end.y + 50
+    x1 = point.x
+    y1 = point.y
+    x2 = point.x
+    y2 = point.y + 50
     thickness = 1
     totalthickness = 0
     for k in range(n):
-        line = rg.Line(rg.Point(start.x, start.y), rg.Point(end.x, end.y))
+        line = rg.Line(rg.Point(x1, y1), rg.Point(x2, y2))
         line.thickness = thickness
         line.attach_to(window)
-        start.y = start.y + 10
-        end.y = end.y + 10
-        start.x = start.x + 20
-        end.x = end.x + 20
+        y1 = y1 + 10
+        y2 = y2 + 10
+        x1 = x1 + 20
+        x2 = x2 + 20
         totalthickness = totalthickness + thickness
         print(totalthickness)
 
